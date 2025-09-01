@@ -1,4 +1,4 @@
-from ocrusingtesseract import gang
+from OCR import ocr_detect_main
 
 import cv2
 import time
@@ -24,13 +24,9 @@ def main():
         file_name = f"image/image_{timestamp}.jpg"
         frame = capture_image(file_name)
         time.sleep(5)
-        gang(frame,f'image1/image_{timestamp}.jpg')
-
-        
-        # 5분 간격으로 사진을 찍습니다.
-        
-        #       
-        #save image
+        ocr_detect_main(frame,file_name)
+        save_path = f"result/{file_name}"
+        cv2.imwrite(save_path, file_name)
 
 if __name__ == "__main__":
     main()
